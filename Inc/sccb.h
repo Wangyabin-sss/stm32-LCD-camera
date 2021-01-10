@@ -1,26 +1,23 @@
 #ifndef __SCCB_H
 #define __SCCB_H
+
 #include "main.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序参考自网友guanfu_wang代码。
-//ALIENTEK STM32F103开发板 
-//SCCB 驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2015/4/16
-//版本：V1.0		    							    							  
-//////////////////////////////////////////////////////////////////////////////////
+#include "tim.h"
+
+//SCCB 驱动代码	   SDA为GPIOA_1 SCL为GPIOA_0
  
- 
-#define SCCB_SDA_IN()  {GPIOA->CRL&=0XFFFFFF0F;GPIOA->CRL|=0X00000080;}   //GPIOA的1口 输入（1000）      上下拉输入
-#define SCCB_SDA_OUT() {GPIOA->CRL&=0XFFFFFF0F;GPIOA->CRL|=0X00000030;}   //GPIOA的1口 输出（0011）50MHz 推挽输出
+#define SCCB_SDA_IN()  {GPIOA->MODER&=0XFFFFFFF3;}                             //GPIOA的1口 输入  
+#define SCCB_SDA_OUT() {GPIOA->MODER&=0XFFFFFFF3; GPIOA->MODER|=0X00000004;}   //GPIOA的1口 输出  
 
 //IO操作函数	 
-#define SCCB_SCL    		PDout(3)	 	//SCL
-#define SCCB_SDA    		PGout(13) 		//SDA	 
-#define SCCB_READ_SDA   PGin(13)  		//输入SDA    
+#define SCCB_SCL(set)		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, set)
+
+#define SCCB_SDA(set)		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, set)
+#define SCCB_READ_SDA   (GPIOA->IDR & 0x00000002) != 0 ? 1:0
 
 #define SCCB_ID   		 0X60  			//OV2640的ID
+
+
 
 ///////////////////////////////////////////
 void SCCB_Init(void);

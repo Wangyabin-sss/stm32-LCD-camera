@@ -32,9 +32,12 @@
 001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 001_f4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 001_f4\main.o: ../Inc/crc.h
 001_f4\main.o: ../Inc/spi.h
+001_f4\main.o: ../Inc/tim.h
 001_f4\main.o: ../Inc/usart.h
 001_f4\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 001_f4\main.o: ../Inc/gpio.h
