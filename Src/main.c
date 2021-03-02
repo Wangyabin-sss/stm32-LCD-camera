@@ -110,18 +110,19 @@ int main(void)
 //	show_photo(100,300,50,50,GREEN);
   while (1)
   {
-		i=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_7);
-		if(i==GPIO_PIN_RESET)
-		{
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_RESET);
-		}
-		if(i==GPIO_PIN_SET)
-		{
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_SET);
-		}
+//		i=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_7);
+//		if(i==GPIO_PIN_RESET)
+//		{
+//			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_RESET);
+//		}
+//		if(i==GPIO_PIN_SET)
+//		{
+//			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_SET);
+//		}
+			HAL_Delay(10);
+//		XPT2046_data();
 		
-		HAL_Delay(100);
-		XPT2046_data();
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -12,6 +12,7 @@
 "001_f4\usart.o"
 "001_f4\stm32f4xx_it.o"
 "001_f4\stm32f4xx_hal_msp.o"
+"001_f4\ov2640.o"
 "001_f4\stm32f4xx_hal_crc.o"
 "001_f4\stm32f4xx_hal_rcc.o"
 "001_f4\stm32f4xx_hal_rcc_ex.o"

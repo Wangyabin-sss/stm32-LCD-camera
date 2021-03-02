@@ -22,16 +22,23 @@ Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
 C:\Users\Home\Desktop\New Folder\001_f4\MDK-ARM\001_f4.uvprojx
-Project File Date:  01/08/2021
+Project File Date:  01/10/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target '001_f4'
-compiling sccb.c...
+compiling ov2640.c...
+..\Src\ov2640.c(31): warning:  #188-D: enumerated type mixed with another type
+  	OV2640_PWDN(0);				//POWER ON
+..\Src\ov2640.c(33): warning:  #188-D: enumerated type mixed with another type
+  	OV2640_RST(0);				//¸´Î»OV2640
+..\Src\ov2640.c(35): warning:  #188-D: enumerated type mixed with another type
+  	OV2640_RST(1);				//½áÊø¸´Î» 
+..\Src\ov2640.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=11500 RO-data=448 RW-data=36 ZI-data=1380  
+Program Size: Code=9450 RO-data=450 RW-data=36 ZI-data=1332  
 FromELF: creating hex file...
-"001_f4\001_f4.axf" - 0 Error(s), 0 Warning(s).
+"001_f4\001_f4.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
