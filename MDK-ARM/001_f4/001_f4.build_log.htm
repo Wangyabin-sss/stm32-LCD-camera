@@ -27,18 +27,14 @@ Project File Date:  01/10/2021
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target '001_f4'
-compiling ov2640.c...
-..\Src\ov2640.c(31): warning:  #188-D: enumerated type mixed with another type
-  	OV2640_PWDN(0);				//POWER ON
-..\Src\ov2640.c(33): warning:  #188-D: enumerated type mixed with another type
-  	OV2640_RST(0);				//¸´Î»OV2640
-..\Src\ov2640.c(35): warning:  #188-D: enumerated type mixed with another type
-  	OV2640_RST(1);				//½áÊø¸´Î» 
-..\Src\ov2640.c: 3 warnings, 0 errors
+compiling main.c...
+../Src/main.c(86): warning:  #177-D: variable "i"  was declared but never referenced
+  	uint16_t i=0,exc=0,err=0;
+../Src/main.c: 1 warning, 0 errors
 linking...
-Program Size: Code=9450 RO-data=450 RW-data=36 ZI-data=1332  
+Program Size: Code=11044 RO-data=1256 RW-data=36 ZI-data=1332  
 FromELF: creating hex file...
-"001_f4\001_f4.axf" - 0 Error(s), 3 Warning(s).
+"001_f4\001_f4.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -61,7 +57,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

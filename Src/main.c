@@ -31,6 +31,7 @@
 #include "ili9488.h"
 #include "xpt2046.h"
 #include "photo.h"
+#include "ov2640.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +57,18 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+//----OV2640速度控制
+//----根据LCD分辨率的不同，设置不同的参数
+void ov2640_speed_ctrl(void)
+{
+	uint8_t clkdiv,pclkdiv;			//时钟分频系数和PCLK分频系数
+		clkdiv=2;
+		pclkdiv=8;
+	SCCB_WR_Reg(0XFF,0X00);		
+	SCCB_WR_Reg(0XD3,pclkdiv);	//设置PCLK分频
+	SCCB_WR_Reg(0XFF,0X01);
+	SCCB_WR_Reg(0X11,clkdiv);	//设置CLK分频	
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -71,7 +83,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint16_t i=0,j=0;
+	uint16_t i=0,exc=0,err=0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -99,6 +111,21 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 	LCD_Init();
+	HAL_Delay(2);
+	err=OV2640_Init();
+	if(err!=0)
+	{
+		printf("ov2640初始化失败 %d\n",err);
+		while(1);
+	}
+	OV2640_RGB565_Mode();
+	err=OV2640_OutSize_Set(320,480); 
+	if(err!=0)
+	{
+		printf("ov2640尺寸设置失败 %d\n",err);
+		while(1);
+	}
+	ov2640_speed_ctrl();
 	
   /* USER CODE END 2 */
 
@@ -110,19 +137,19 @@ int main(void)
 //	show_photo(100,300,50,50,GREEN);
   while (1)
   {
-//		i=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_7);
-//		if(i==GPIO_PIN_RESET)
-//		{
-//			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_RESET);
-//		}
-//		if(i==GPIO_PIN_SET)
-//		{
-//			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_SET);
-//		}
-			HAL_Delay(10);
-//		XPT2046_data();
-		
-		
+		while(OV2640_VSYNC==1)	//开始采集数据
+		{
+			while(OV2640_HREF)
+			{  
+				while(OV2640_PCLK==0); 
+				exc = (uint16_t)OV2640_DATA;
+				while(OV2640_PCLK==1);  
+				while(OV2640_PCLK==0); 
+				*(__IO uint16_t*) FSMC_DATA = (uint16_t)(((uint16_t)OV2640_DATA<<8)|exc);
+				while(OV2640_PCLK==1);
+			} 
+		}	
+		//printf("\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

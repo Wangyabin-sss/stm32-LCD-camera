@@ -51,7 +51,7 @@ uint8_t OV2640_Init(void)
 	if(reg!=OV2640_PID)
 	{
 		printf("HID:%d\r\n",reg);
-		//return 2;
+		return 2;
 	}   
  	//初始化 OV2640,采用SXGA分辨率(1600*1200)  
 	for(i=0;i<sizeof(ov2640_uxga_init_reg_tbl)/2;i++)
@@ -167,7 +167,7 @@ void OV2640_Light_Mode(uint8_t mode)
 	SCCB_WR_Reg(0XC7,0X40);	//AWB OFF 
 	SCCB_WR_Reg(0XCC,regccval); 
 	SCCB_WR_Reg(0XCD,regcdval); 
-	SCCB_WR_Reg(0XCE,regceval);  
+	SCCB_WR_Reg(0XCE,regceval); 
 }
 //色度设置
 //0:-2

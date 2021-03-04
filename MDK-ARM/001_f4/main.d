@@ -45,3 +45,5 @@
 001_f4\main.o: ../Inc/ili9488.h
 001_f4\main.o: ../Inc/xpt2046.h
 001_f4\main.o: ../Inc/photo.h
+001_f4\main.o: ../Inc/ov2640.h
+001_f4\main.o: ../Inc/sccb.h
