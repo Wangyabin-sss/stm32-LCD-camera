@@ -5,3 +5,6 @@
 新增ov2640的SCCB驱动以及将定时器14做为us延时器
 ### 2021.3.2
 新增ov2640的驱动，等待测试
+### 2021.3.4
+在LCD屏上测试完成，功能待完善
+![](C:\Users\Home\Desktop\New Folder\001_f4\image\001.jpg)
